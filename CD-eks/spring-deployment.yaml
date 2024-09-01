@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: web
+  labels:
+    app: backend
+spec:
+  replicas: 8
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: 471112688816.dkr.ecr.ap-northeast-2.amazonaws.com/spring:v50
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: aws-credentials-volume
+          mountPath: /root/.aws/
+          subPath: aws_credentials
+        resources:
+          limits:
+            memory: "1500Mi"    # limit과 request 값을 동일하게 설정
+            cpu: "500m"
+          requests:
+            memory: "1500Mi"    # limit과 request 값을 동일하게 설정
+            cpu: "500m"
+        env:
+        - name: JAVA_TOOL_OPTIONS
+          value: "-XX:InitialRAMPercentage=50.0 -XX:MaxRAMPercentage=50.0"
+      volumes:
+      - name: aws-credentials-volume
+        secret:
+          secretName: aws-credentials

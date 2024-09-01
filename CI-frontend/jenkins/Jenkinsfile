@@ -1,0 +1,93 @@
+pipeline {
+    agent any
+
+    environment {
+        ECR_REGISTRY = '471112688816.dkr.ecr.ap-northeast-2.amazonaws.com'  // ECR Registry URL
+        ECR_REPOSITORY = 'streamlit'  // ECR Repository 이름
+        IMAGE_TAG = "v${env.BUILD_ID}"  // 도커 이미지 태그
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // GitLab에서 코드 가져오기
+                checkout scm
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                // Docker 이미지 빌드
+                script {
+                    docker.build("${ECR_REPOSITORY}:${IMAGE_TAG}")
+                }
+            }
+        }
+
+        stage('Docker Push to ECR') {
+            steps {
+                script {
+                    // ECR 로그인
+                    sh '''
+                    aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin ${ECR_REGISTRY}
+                    '''
+                    // ECR에 이미지 푸시
+                    sh "docker tag ${ECR_REPOSITORY}:${IMAGE_TAG} ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
+                    sh "docker push ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}"
+                }
+            }
+        }
+
+
+
+        stage('Checkout EKS Repo') {
+            steps {
+                // EKS 레포지토리 클론
+                checkout([$class: 'GitSCM',
+                branches: [[name: '*/main']],
+                userRemoteConfigs: [[url: 'http://10.0.201.57:8080/team2/eks.git', credentialsId: 'admin-cicd']]
+                ])  
+            }
+        }
+
+        stage('Create and Update Dev Branch') {
+            steps {
+                script {
+                    // dev 브랜치 생성 및 main에서 pull
+                    sh '''
+                    git checkout -b frontend || git checkout frontend
+                    git pull origin main
+                    '''
+
+                    // 최신 이미지를 dev 브랜치의 deployment 파일에 반영
+                    sh "sed -i 's|image: .*|image: ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}|g' streamlit-deployment.yaml"
+
+                    // 변경된 파일을 커밋하고 dev 브랜치에 푸시
+                    sh "git add streamlit-deployment.yaml"
+                    sh "git commit -m 'Update image tag to ${IMAGE_TAG}'"
+                    sh "git push origin frontend"
+                }
+            }
+        }
+
+        stage('Merge Dev into Main') {
+            steps {
+                script {
+                    // main 브랜치로 체크아웃
+                    sh 'git checkout main'
+
+                    // dev 브랜치 병합
+                    sh 'git merge -X theirs frontend'
+
+                    sh "git branch -D frontend"
+                    
+                    sh "git push origin --delete frontend"
+
+                    // 병합된 main 브랜치를 원격 저장소에 푸시
+                    sh 'git push origin main'
+                }
+            }
+        }
+    }
+}
+

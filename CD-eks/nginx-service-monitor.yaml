@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: nginx-service-monitor
+  namespace: web
+  labels:
+    app: nginx
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  namespaceSelector:
+    matchNames:
+    - nginx
+  endpoints:
+  - port: "9113"
+    path: /metrics
+    interval: 10s

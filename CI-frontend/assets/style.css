@@ -1,0 +1,53 @@
+/* 전체 배경 색상 */
+body {
+    background-color: white;
+}
+
+/* Streamlit의 상단 바 색상 설정 */
+.css-1o9t5g6 {
+    background-color: white;
+}
+
+/* 사이드바 배경색 설정 */
+.css-1b2c5h2 {
+    background-color: white;
+}
+
+/* 사이드바 메뉴 텍스트 색상 설정 */
+.css-1n07e54 {
+    color: black;
+}
+
+/* 사이드바 버튼 스타일 */
+.css-16y2xw1 {
+    color: black;
+}
+
+/* 사이드바 로고 이미지 스타일 설정 */
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    margin-top: 20px; /* 위로 이동 */
+    margin-bottom: 20px;
+    background-color: transparent; /* 배경색을 투명으로 설정 */
+}
+
+.sidebar-logo img {
+    width: 100%;
+    height: auto;
+}
+
+/* 사이드바 메뉴 배경색을 흰색으로 설정 */
+.css-1b2c5h2 {
+    background-color: white;
+}
+
+.css-1n07e54 {
+    background-color: white;
+}
+
+.css-16y2xw1 {
+    background-color: white;
+}

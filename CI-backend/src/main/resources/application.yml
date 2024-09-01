@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: backend
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://cognito-idp.ap-northeast-2.amazonaws.com/ap-northeast-2_dcwrwaxzr
+  datasource:
+    url: jdbc:postgresql://dev-rds-instance-postgresql-2a.cz6yiiwocyad.ap-northeast-2.rds.amazonaws.com:5432/dev
+    username: postgres
+    password: postgres-master
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+aws:
+  personalize:
+    campaign-arn: arn:aws:personalize:ap-northeast-2:471112688816:campaign/test2-campaign

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streamlit-deployment
+  namespace: web
+spec:
+  replicas: 8
+  selector:
+    matchLabels:
+      app: streamlit
+  template:
+    metadata:
+      labels:
+        app: streamlit
+    spec:
+      containers:
+      - name: streamlit
+        image: 471112688816.dkr.ecr.ap-northeast-2.amazonaws.com/streamlit:v166
+        ports:
+        - containerPort: 8501
+        resources:
+          requests:
+            memory: "3000Mi"
+            cpu: "500m"
+          limits:
+            memory: "3000Mi"
+            cpu: "1000m"
