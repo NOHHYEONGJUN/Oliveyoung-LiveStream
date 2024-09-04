@@ -141,7 +141,7 @@
 
 ## 6. Rekognition + Personalize - Service Flow
 
-<img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/Reko+Personalize.png">
+<img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/Rekognition+Personalize.png">
 
 &nbsp;
 
@@ -175,7 +175,7 @@
 
 ## 9-2. Lambda Pipeline
 
-<img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/Lambda.png">
+<img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/Lambda-pipeline.png">
 
 &nbsp;
 
