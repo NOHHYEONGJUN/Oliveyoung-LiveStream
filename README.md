@@ -3,6 +3,7 @@
 <img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/Project-Logo.png">
 
 - 접속 URL : https://www.olcl.shop
+- Test ID : user1 / CloudWave!
 
 &nbsp;
 
