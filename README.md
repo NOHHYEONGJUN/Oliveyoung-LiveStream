@@ -24,9 +24,87 @@
 | ❤️ | <li>Rekognize 서비스 구현</li><li>모니터링 환경 구축</li><li>EKS cluster 구축</li> |<li>CI/CD pipeline 구축</li><li>DR 인프라 구축</li><li>EKS cluster 구축</li>|<li>애플리케이션 개발 총괄</li><li>인프라 비용 산정</li><li>아키텍처 고도화</li>|<li>EKS cluster 구축</li><li>모니터링 환경, 대시보드 구축</li><li>Personalize 서비스 구현</li>|<li>IVS 서비스 구현</li><li>Lambda 자동화 서비스 구축</li><li>예산 및 알림 서비스 구현</li>|
 | 테스트1 | 테스트2 | ㅇㅇ | ㅇㅇ | ㅇㅇ | ㅇㅇ |
 
+&nbsp;
+
+## 기술 스택
+1. **인프라**
+   - Nginx
+   - Kubernetes
+   - EC2
+  
+2. **개발**
+   - Streamlit
+   - SpringBoot
+   - Lambda
+  
+3. **데이터 베이스**
+   - RDS
+   - DynamoDB
+   - S3
+  
+4. **CI/CD**
+   - GitLab
+   - Jenkins
+   - ArgoCD
+  
+5. **모니터링**
+   - Loki
+   - Prometheus
+   - Grafana
+   - CloudWatch
+
+&nbsp;
+
+## 프로젝트 차별점
+
+- 개발 환경과 운영 환경 분리 및 격리를 위한 중앙 관리 환경 존재
+- Warm Standby DR (RTO : 5min / RPO : 15min)
+- Public Bastion X → EC2 Instance Connect Endpoint 사용
+- 썸네일을 사용한 Rekognize로 1/25 수준 비용 절감
 
 &nbsp;
 
 ## 전체 아키텍처
 
 <img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/main-archi.png">
+
+&nbsp;
+
+## IVS Service Flow
+
+<img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/IVS-service.png">
+
+&nbsp;
+
+## Rekognition + Personalize Service Flow
+
+<img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/Reko+Personalize.png">
+
+&nbsp;
+
+## Monitoring
+
+<img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/Grafana.png">
+
+- Prometheus + Loki & Cloudwatch
+
+&nbsp;
+
+## Alarm
+
+<img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/Alarm.png">
+
+&nbsp;
+
+## CI/CD Pipeline
+
+<img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/CICD.png">
+
+&nbsp;
+
+## Load Test
+
+<img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/LoadTest.png">
+
+- ApacheBench & Jmeter 를 통한 100,000 request/s Test
+
