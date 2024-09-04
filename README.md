@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/79fed440-6877-491a-bfe3-195ce62e72a4)# OliveYoung Live Commerce 
+# OliveYoung Live Commerce 
 
 <img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/Project-Logo.png">
 
