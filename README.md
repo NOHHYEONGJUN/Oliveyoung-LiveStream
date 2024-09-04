@@ -165,9 +165,17 @@
 
 &nbsp;
 
-## 9. CI/CD Pipeline
+## 9-1. CI/CD Pipeline
 
 <img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/CICD.png">
+
+&nbsp;
+
+&nbsp;
+
+## 9-2. Lambda Pipeline
+
+<img src="https://github.com/nhj7804/Oliveyoung-LiveStream/blob/main/images/Lambda.png">
 
 &nbsp;
 
