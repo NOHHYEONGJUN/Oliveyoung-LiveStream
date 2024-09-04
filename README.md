@@ -60,27 +60,37 @@
    - Nginx
    - Kubernetes
    - EC2
-  
+
+&nbsp;
+
 2. **개발**
    - Streamlit
    - SpringBoot
    - Lambda
+
+&nbsp;
   
 3. **데이터 베이스**
    - RDS
    - DynamoDB
    - S3
+
+&nbsp;
   
 4. **CI/CD**
    - GitLab
    - Jenkins
    - ArgoCD
+
+&nbsp;
   
 5. **모니터링**
    - Loki
    - Prometheus
    - Grafana
    - CloudWatch
+
+&nbsp;
 
 6. **협업**
    - Notion
