@@ -191,7 +191,7 @@
 
 &nbsp;
 
-## 10. 개선 목표
+## 11. 개선 목표
 
 1. Monitoring 최적화
       - 단일 Prometheus기반 중앙 집중식 모니터링 → Thanos(OSS)를 활용한 메트릭 관리
